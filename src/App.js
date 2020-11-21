@@ -7,6 +7,7 @@ import theme from "./theme";
 import "./App.css";
 import { Typography } from "@material-ui/core";
 import HelloWorld from './HelloWorld';
+const task = "empty";
 
 const stripAndConvertStringToNumber = (stringToConvert) =>
   Number.parseFloat(stringToConvert.trim(), 10);
@@ -55,7 +56,7 @@ function App() {
         <Typography variant="h2" component="h1">
           Lysthus 1.0.0          
         </Typography>
-        <div className="App">
+        <div className="App">          
           <HelloWorld />
         </div>     
         <div className={classes.table}>
