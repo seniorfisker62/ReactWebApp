@@ -56,9 +56,7 @@ function App() {
         <Typography variant="h2" component="h1">
           Lysthus 1.0.0          
         </Typography>
-        <div className="App">          
-          <HelloWorld />
-        </div>     
+             
         <div className={classes.table}>
           <Measurements measurements={measurements} />
         </div>
