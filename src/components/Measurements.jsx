@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     minWidth: 250,
   },
 });
-var x = 0;
+
 
 export const Measurements = ({ measurements }) => {
   const classes = useStyles();
