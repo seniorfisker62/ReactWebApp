@@ -3,7 +3,7 @@ import React from 'react';
 const HelloWorld = () => {
   
   function sayHello() {
-    global.task = "day";
+    global.task = "oneday";
     //alert('Hello, World!');
   }
   
