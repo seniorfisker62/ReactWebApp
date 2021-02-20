@@ -7,9 +7,7 @@ import theme from "./theme";
 import "./App.css";
 import { Typography } from "@material-ui/core";
 import HelloWorld from './HelloWorld';
-global.task = "empty";
-
-
+global.task = "onehour";
 
 const stripAndConvertStringToNumber = (stringToConvert) =>
   Number.parseFloat(stringToConvert.trim(), 10);
