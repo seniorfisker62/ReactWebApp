@@ -20,13 +20,22 @@ const useStyles = makeStyles({
 
 export const Measurements = ({ measurements }) => {
   const classes = useStyles();
-  
-  if (global.task == "empty")
-  {
-    return;
+   
+  // global.hour bliver sat til oneday når der trykkes på en button
+  // så når det er onehour, så skal der kun vises sidste måling
+  // den bliver sat til onehour i app.js
+  // så det store spørgsmål er , hvordan får man returneret forskellige resultater  
+   //if (global.task == "onehour")
+   //{
+   // return  et eller andet andet resultat;
+   // eller returner det her nedenunder
+   // jeg har forsøgt mig med forskellige if elle konstruktioner, men det går bare ikke
+   // tror der stadig er et trick jeg ikke har forstået
+   //}
 
-  }
-  
+
+
+
   const buildTimeHeader = () => {
     if (measurements.length) {
       return <h2> {format(measurements[0].timestamp, 'PP')}</h2>;
