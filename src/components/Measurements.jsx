@@ -20,6 +20,13 @@ const useStyles = makeStyles({
 
 export const Measurements = ({ measurements }) => {
   const classes = useStyles();
+  
+  if (global.task == "empty")
+  {
+    return;
+
+  }
+  
   const buildTimeHeader = () => {
     if (measurements.length) {
       return <h2> {format(measurements[0].timestamp, 'PP')}</h2>;
