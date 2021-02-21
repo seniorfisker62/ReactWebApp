@@ -5,9 +5,7 @@ import { ThemeProvider, makeStyles } from "@material-ui/core/styles";
 import { parse } from "date-fns";
 import theme from "./theme";
 import "./App.css";
-import { Typography } from "@material-ui/core";
-import HelloWorld from './HelloWorld';
-global.task = "onehour";
+import { Button, Typography } from "@material-ui/core";
 
 const stripAndConvertStringToNumber = (stringToConvert) =>
   Number.parseFloat(stringToConvert.trim(), 10);
@@ -35,9 +33,9 @@ const useStyles = makeStyles({
   },
 });
 
-
 function App() {
   const [measurements, setMeasurements] = useState([]);
+  const [onlyLatest, setOnlyLatest] = useState(false);
   const classes = useStyles();
 
   useEffect(() => {
@@ -52,22 +50,22 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-        <div className={classes.root}>
+      <div className={classes.root}>
         <Typography variant="h2" component="h1">
-          Lysthus 1.0.0          
+          Lysthus 1.0.0
         </Typography>
-        <div className="App">          
-          <HelloWorld />
-        </div>      
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setOnlyLatest(!onlyLatest)}
+        >
+          {onlyLatest ? "Vis alle målinger" : "Vis seneste målinger"}
+        </Button>
         <div className={classes.table}>
-          if (global.task == "onehour")
-          {
-            <Measurements measurements={measurements} />
-          }
+          {<Measurements measurements={measurements} onlyLatest={onlyLatest} />}
         </div>
       </div>
     </ThemeProvider>
   );
-
 }
 export default App;

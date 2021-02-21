@@ -1,15 +1,14 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Paper from '@material-ui/core/Paper';
-import { format } from 'date-fns';
-
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Paper from "@material-ui/core/Paper";
+import { format } from "date-fns";
 
 const useStyles = makeStyles({
   table: {
@@ -17,30 +16,25 @@ const useStyles = makeStyles({
   },
 });
 
-
-export const Measurements = ({ measurements }) => {
+export const Measurements = ({ measurements, onlyLatest }) => {
   const classes = useStyles();
-   
-  // global.hour bliver sat til oneday når der trykkes på en button
-  // så når det er onehour, så skal der kun vises sidste måling
-  // den bliver sat til onehour i app.js
-  // så det store spørgsmål er , hvordan får man returneret forskellige resultater  
-   //if (global.task == "onehour")
-   //{
-   // return  et eller andet andet resultat;
-   // eller returner det her nedenunder
-   // jeg har forsøgt mig med forskellige if else konstruktioner, men det går bare ikke
-   // tror der stadig er et trick jeg ikke har forstået
-   //}
-
-
-
 
   const buildTimeHeader = () => {
     if (measurements.length) {
-      return <h2> {format(measurements[0].timestamp, 'PP')}</h2>;
+      return <h2> {format(measurements[0].timestamp, "PP")}</h2>;
     }
   };
+
+  const buildMeasurementRow = (measurement) => (
+    <TableRow key={measurements.timestamp}>
+      <TableCell align="left">{format(measurement.timestamp, "k:m")}</TableCell>
+      <TableCell align="left">{measurement.lysthusTemp}&#8451;</TableCell>
+      <TableCell align="left">{measurement.lysthusFugt}%</TableCell>
+      <TableCell align="left">{measurement.udeTemp}&#8451;</TableCell>
+      <TableCell align="left">{measurement.udeFugt}%</TableCell>
+    </TableRow>
+  );
+
   return (
     <div>
       {buildTimeHeader()}
@@ -57,26 +51,10 @@ export const Measurements = ({ measurements }) => {
                 <TableCell align="left">Fugt ude</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>     
-              {measurements.map((measurements) => (      
-                <TableRow key = {measurements.timestamp}>            
-                  <TableCell align="left">
-                    {format(measurements.timestamp, 'k:m')}
-                  </TableCell>
-                  <TableCell align="left">
-                    {measurements.lysthusTemp}&#8451;
-                  </TableCell>
-                  <TableCell align="left">
-                    {measurements.lysthusFugt}%
-                  </TableCell>
-                  <TableCell align="left">
-                    {measurements.udeTemp}&#8451;
-                  </TableCell>
-                  <TableCell align="left">
-                    {measurements.udeFugt}%
-                  </TableCell>                    
-                </TableRow>
-              ))}    
+            <TableBody>
+              {onlyLatest
+                ? buildMeasurementRow(measurements[0])
+                : measurements.map(buildMeasurementRow)}
             </TableBody>
           </Table>
         </TableContainer>
