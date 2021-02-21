@@ -29,7 +29,7 @@ export const Measurements = ({ measurements }) => {
    //{
    // return  et eller andet andet resultat;
    // eller returner det her nedenunder
-   // jeg har forsøgt mig med forskellige if elle konstruktioner, men det går bare ikke
+   // jeg har forsøgt mig med forskellige if else konstruktioner, men det går bare ikke
    // tror der stadig er et trick jeg ikke har forstået
    //}
 
