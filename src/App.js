@@ -60,7 +60,10 @@ function App() {
           <HelloWorld />
         </div>      
         <div className={classes.table}>
-          <Measurements measurements={measurements} />
+          if (global.task == "onehour")
+          {
+            <Measurements measurements={measurements} />
+          }
         </div>
       </div>
     </ThemeProvider>
