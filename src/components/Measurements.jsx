@@ -45,10 +45,10 @@ export const Measurements = ({ measurements, onlyLatest }) => {
             <TableHead>
               <TableRow>
                 <TableCell align="left">Tid</TableCell>
-                <TableCell align="left">Temp. skur</TableCell>
-                <TableCell align="left">Fugt skur</TableCell>
-                <TableCell align="left">Temp. ude</TableCell>
-                <TableCell align="left">Fugt ude</TableCell>
+                <TableCell align="left">Temp. lysthus</TableCell>
+                <TableCell align="left">Fugt lysthus</TableCell>
+                <TableCell align="left">Temp. bag lysthus</TableCell>
+                <TableCell align="left">Fugt bag lysthus</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
