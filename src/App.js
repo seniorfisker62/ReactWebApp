@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 
 function App() {
   const [measurements, setMeasurements] = useState([]);
-  const [onlyLatest, setOnlyLatest] = useState(false);
+  const [onlyLatest, setOnlyLatest] = useState(true);
   const classes = useStyles();
 
   useEffect(() => {
@@ -59,7 +59,7 @@ function App() {
           color="primary"
           onClick={() => setOnlyLatest(!onlyLatest)}
         >
-          {onlyLatest ? "Vis alle målinger" : "Vis seneste målinger"}
+          {onlyLatest ? "Vis alle målinger" : "Vis seneste måling"}
         </Button>
         <div className={classes.table}>
           {<Measurements measurements={measurements} onlyLatest={onlyLatest} />}
